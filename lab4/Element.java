@@ -1,4 +1,4 @@
-package lab3;
+package lab4;
 public interface Element {
     void print();
     void add(Element element) throws Exception;

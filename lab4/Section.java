@@ -1,20 +1,12 @@
-package lab3;
+package lab4;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Section implements Element{
     private String title;
-    private ArrayList<Element> elements;
+    private ArrayList<Element> elements = new ArrayList<>();
 
     public Section(String title){
         this.title = title;
-        this.elements = new ArrayList<Element>();
-    }
-
-    public Section(Section section) {
-        this.title = section.title;
-        this.elements = new ArrayList<>();
-        Collections.copy(this.elements, section.elements);
     }
 
     public void add(Element element){
@@ -34,13 +26,6 @@ public class Section implements Element{
         return false;
     }
 
-    public void print() {
-        System.out.println("Title" + this.title);
-        
-        for (Element e : this.elements)
-            e.print();  
-    }
-
     public Element clone() {
         Section newclone = new Section(this.title);
 
@@ -50,5 +35,12 @@ public class Section implements Element{
         }
 
         return newclone;
+    }
+
+    public void print() {
+        System.out.println("Title" + this.title);
+        
+        for (Element e : this.elements)
+            e.print();  
     }
 }

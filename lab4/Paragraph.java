@@ -1,13 +1,9 @@
-package lab3;
+package lab4;
 public class Paragraph implements Element{
     private String text;
 
     public Paragraph(String text) {
         this.text = text;
-    }
-
-    public Paragraph(Paragraph paragraph) {
-        this.text = paragraph.text;
     }
 
     public void add(Element element) {
@@ -26,13 +22,13 @@ public class Paragraph implements Element{
         }
     }
 
-    public void print() {
-        System.out.println("Paragraph" + this.text);
-    }
-
     public Element clone() {
         Paragraph newparagraph = new Paragraph(this.text);
         return newparagraph;
+    }
+
+    public void print() {
+        System.out.println("Paragraph" + this.text);
     }
     
 }

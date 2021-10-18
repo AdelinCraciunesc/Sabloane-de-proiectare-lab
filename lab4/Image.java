@@ -1,14 +1,19 @@
-package lab3;
-public class Image implements Element{
+package lab4;
+
+import java.util.concurrent.TimeUnit;
+
+public class Image implements Element,Picture{
 
     private String imageName;
+    private Dimension dim = new Dimension(40,60);
 
     public Image(String imageName){
         this.imageName = imageName;
-    }
-
-    public Image(Image image) {
-        this.imageName = image.imageName;
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void add(Element element) {
@@ -27,12 +32,22 @@ public class Image implements Element{
         }
     }
 
+    public void print() {
+        System.out.println("Image with name" + this.imageName);
+    }
+
     public Element clone() {
         Image newimage = new Image(this.imageName);
         return newimage;
     }
 
-    public void print() {
-        System.out.println("Image with name" + this.imageName);
+    @Override
+    public String url() {
+        return this.imageName;
+    }
+
+    @Override
+    public Dimension dim() {
+        return this.dim;
     }
 }

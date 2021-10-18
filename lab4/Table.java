@@ -1,14 +1,10 @@
-package lab3;
+package lab4;
 
 public class Table implements Element{
     private String title;
 
     public Table(String title){
         this.title = title;
-    }
-
-    public Table(Table table) {
-        this.title = table.title;
     }
 
     public void add(Element element) {
