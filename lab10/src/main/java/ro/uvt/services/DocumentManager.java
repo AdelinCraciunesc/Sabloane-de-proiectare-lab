@@ -1,6 +1,6 @@
 package ro.uvt.services;
 
-import lab10.models.Book;
+import ro.uvt.models.*;
 
 public class DocumentManager {
     public static DocumentManager instance;

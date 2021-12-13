@@ -1,7 +1,7 @@
 package ro.uvt.services;
 
-import lab10.models.Section;
-import lab10.models.Paragraph;
+import ro.uvt.models.*;
+
 
 public class SaveCommand implements Command{
     private Section section;

@@ -2,14 +2,26 @@ package ro.uvt.models;
 
 import java.util.concurrent.TimeUnit;
 
-import lab10.services.*;
+import lombok.NoArgsConstructor;
+import ro.uvt.services.*;
 
-public class Image implements Element,Picture,Visitee{
+import javax.persistence.*;
+
+@Entity
+@NoArgsConstructor
+public class Image extends Element implements Picture,Visitee{
 
     private String imageName;
+    @OneToOne
     private Dimension dim = new Dimension(40,60);
+    @Transient
     private ImageLoader content;
+    @Transient
     private ImageLoaderFactory imageFactory = new ImageLoaderFactory();
+
+    @Id
+    @GeneratedValue
+    private Long id;
 
     public void loadContent() throws Exception {
         content = imageFactory.create(imageName);
@@ -38,23 +50,6 @@ public class Image implements Element,Picture,Visitee{
 
     public void remove(Element element) {
         //later
-    }
-
-    public boolean find(Element element) {
-        if (!(element instanceof Image))
-            return false;
-        else {
-            return ((Image) element).imageName.equals(this.imageName);
-        }
-    }
-
-    public void print() {
-        System.out.println("Image with name" + this.imageName);
-    }
-
-    public Element clone() {
-        Image newimage = new Image(this.imageName);
-        return newimage;
     }
 
     @Override

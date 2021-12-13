@@ -1,27 +1,42 @@
 package ro.uvt.models;
 
+import javax.persistence.*;
+import ro.uvt.services.*;
 import java.util.ArrayList;
 
-import lab10.services.*;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
-public class Book implements Visitee{
-
+@Entity
+public class Book implements Visitee {
     private String title;
+
+    @OneToMany (targetEntity = Element.class)
+    private ArrayList<Element> elements;
+
+    @ManyToMany
     private ArrayList<Author> authors;
-    private ArrayList<Element> elements; 
-    
-    public Book(String title){
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    public Book(String title) {
         this.title = title;
-        this.authors = new ArrayList<>();
-        this.elements = new ArrayList<>();
+        this.elements = new ArrayList<Element>();
+        this.authors = new ArrayList<Author>();
+    }
+
+    public Book() {
+
     }
 
     public void addContent (Element element) {
         this.elements.add(element);
     }
 
-    public void addAuthor(Author author) {
-        this.authors.add(author);  
+    public void addAuthor (Author author) {
+        this.authors.add(author);
     }
 
     public String getTitle() {
@@ -36,20 +51,17 @@ public class Book implements Visitee{
         return authors;
     }
 
-    public void print() {
-        System.out.println("Book: " + title);
-        
-        for (Author author : this.authors) {
-            author.print();
-        }
-        for (Element chapter : elements) {
-            chapter.print();
-        }
-    }
-
     @Override
     public void accept(Visitor visitor) {
-        // TODO Auto-generated method stub
         visitor.visitBook(this);
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Id
+    public Long getId() {
+        return id;
     }
 }

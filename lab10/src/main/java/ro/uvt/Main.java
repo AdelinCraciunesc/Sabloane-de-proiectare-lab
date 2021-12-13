@@ -1,7 +1,7 @@
 package ro.uvt;
 
-import lab10.models.*;
-import lab10.services.*;
+import ro.uvt.models.*;
+import ro.uvt.services.*;
 
 public class Main {
     public static void main(String[] args) throws Exception {

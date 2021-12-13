@@ -1,8 +1,8 @@
 package ro.uvt.services;
 
-import lab10.models.*;
+import ro.uvt.models.*;
 
-public class AlignRight implements AlignStrategy{
+public class AlignRight extends AlignStrategy{
 
     public void render(Paragraph paragraph, Context context) {
         // TODO Auto-generated method stub

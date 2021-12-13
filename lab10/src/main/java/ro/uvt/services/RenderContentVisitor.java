@@ -1,6 +1,7 @@
 package ro.uvt.services;
 
-import lab10.models.*;
+import ro.uvt.models.*;
+
 
 public class RenderContentVisitor implements Visitor
 {

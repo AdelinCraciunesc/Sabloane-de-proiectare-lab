@@ -1,11 +1,11 @@
 package ro.uvt.models;
 
-import lab10.services.*;
+import ro.uvt.services.*;
 
 /**
  * TableOfContents
  */
-public class TableOfContents implements Element,Visitee{
+public class TableOfContents extends Element implements Visitee{
     private String title;
 
     public TableOfContents(String title)

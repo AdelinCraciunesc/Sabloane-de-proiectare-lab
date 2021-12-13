@@ -1,11 +1,26 @@
 package ro.uvt.models;
 
-import lab10.services.*;
+import lombok.NoArgsConstructor;
+import ro.uvt.services.*;
 
-public class ImageProxy implements Element,Picture,Visitee{
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
+@NoArgsConstructor
+public class ImageProxy extends Element implements Picture,Visitee{
     private String url;
+
+    @OneToOne
     private Dimension dim = new Dimension(300, 300);
+    @OneToOne
     private Image img;
+
+    @Id
+    @GeneratedValue
+    private Long id;
 
     public ImageProxy(String url) {
         this.url = url;
@@ -39,12 +54,6 @@ public class ImageProxy implements Element,Picture,Visitee{
         return null;
     }
 
-    @Override
-    public void print() {
-        // TODO Auto-generated method stub
-        System.out.println("Image proxy with url " + this.url + "dimension " + dim);
-        loadImage().print();
-    }
 
     @Override
     public void add(Element element) throws Exception {
@@ -56,17 +65,6 @@ public class ImageProxy implements Element,Picture,Visitee{
     public void remove(Element element) {
         // TODO Auto-generated method stub
         
-    }
-
-    @Override
-    public boolean find(Element element) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    public Element clone() {
-        ImageProxy newProxy = new ImageProxy(this.url);
-        return newProxy;
     }
 
     public void accept(Visitor visitor) {

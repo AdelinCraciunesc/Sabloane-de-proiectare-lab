@@ -1,9 +1,20 @@
 package ro.uvt.models;
 
-import lab10.services.*;
+import lombok.NoArgsConstructor;
+import ro.uvt.services.*;
 
-public class Table implements Element,Visitee{
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+@NoArgsConstructor
+public class Table extends Element implements Visitee{
     private String title;
+
+    @Id
+    @GeneratedValue
+    private Long id;
 
     public Table(String title){
         this.title = title;
