@@ -5,7 +5,7 @@ import ro.uvt.services.*;
 /**
  * TableOfContents
  */
-public class TableOfContents extends Element implements Visitee{
+public class TableOfContents implements Element,Visitee{
     private String title;
 
     public TableOfContents(String title)

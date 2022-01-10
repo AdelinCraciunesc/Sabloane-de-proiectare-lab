@@ -1,43 +1,31 @@
 package ro.uvt.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Author {
-    private String name;
-
     @Id
     @GeneratedValue
     private Long id;
 
+    private String name;
+
     public Author(String name) {
         this.name = name;
-    }
-
-    public Author() {
-        this.name = "";
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void print() {
         System.out.println(this.name);
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Id
-    public Long getId() {
-        return id;
     }
 }

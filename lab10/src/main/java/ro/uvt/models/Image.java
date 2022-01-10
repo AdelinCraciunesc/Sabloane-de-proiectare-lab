@@ -2,26 +2,13 @@ package ro.uvt.models;
 
 import java.util.concurrent.TimeUnit;
 
-import lombok.NoArgsConstructor;
 import ro.uvt.services.*;
 
-import javax.persistence.*;
-
-@Entity
-@NoArgsConstructor
-public class Image extends Element implements Picture,Visitee{
-
+public class Image implements Element,Picture,Visitee{
     private String imageName;
-    @OneToOne
     private Dimension dim = new Dimension(40,60);
-    @Transient
     private ImageLoader content;
-    @Transient
     private ImageLoaderFactory imageFactory = new ImageLoaderFactory();
-
-    @Id
-    @GeneratedValue
-    private Long id;
 
     public void loadContent() throws Exception {
         content = imageFactory.create(imageName);
@@ -52,6 +39,10 @@ public class Image extends Element implements Picture,Visitee{
         //later
     }
 
+    public boolean find(Element element) {
+        return false;
+    }
+
     @Override
     public String url() {
         return this.imageName;
@@ -72,7 +63,7 @@ public class Image extends Element implements Picture,Visitee{
 
     @Override
     public void accept(Visitor visitor) {
-        // TODO Auto-generated method stub
+        //TODO Auto-generated method stub
         visitor.visitImage(this);
     }
 }

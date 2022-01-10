@@ -1,21 +1,10 @@
 package ro.uvt.models;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-@Entity
-@NoArgsConstructor
-@Data
 public class Dimension{
     private int height;
     private int width;
 
-    @Id
-    @GeneratedValue
+
     private Long id;
 
     public Dimension(int height, int width) {

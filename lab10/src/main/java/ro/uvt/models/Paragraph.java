@@ -5,16 +5,11 @@ import ro.uvt.services.*;
 
 import javax.persistence.*;
 
-@Entity
-@NoArgsConstructor
-public class Paragraph extends Element implements Visitee{
+public class Paragraph implements Element,Visitee{
     private String text;
 
-    @ManyToOne
     private AlignStrategy align;
 
-    @Id
-    @GeneratedValue
     private Long id;
 
     public Paragraph(String text) {
@@ -31,6 +26,10 @@ public class Paragraph extends Element implements Visitee{
 
     public void remove(Element element) {
         //later
+    }
+
+    public boolean find(Element element) {
+        return false;
     }
 
     public String getText() {

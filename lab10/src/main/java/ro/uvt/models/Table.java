@@ -1,20 +1,11 @@
 package ro.uvt.models;
 
-import lombok.NoArgsConstructor;
 import ro.uvt.services.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
-@Entity
-@NoArgsConstructor
-public class Table extends Element implements Visitee{
+public class Table implements Element,Visitee{
     private String title;
 
-    @Id
-    @GeneratedValue
-    private Long id;
 
     public Table(String title){
         this.title = title;

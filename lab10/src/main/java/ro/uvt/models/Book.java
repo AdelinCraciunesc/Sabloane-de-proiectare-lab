@@ -4,31 +4,31 @@ import javax.persistence.*;
 import ro.uvt.services.*;
 import java.util.ArrayList;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Book implements Visitee {
-    private String title;
-
-    @OneToMany (targetEntity = Element.class)
-    private ArrayList<Element> elements;
-
-    @ManyToMany
-    private ArrayList<Author> authors;
-
     @Id
     @GeneratedValue
     private Long id;
+
+    @Column(name = "title")
+    private String title;
+
+    private ArrayList<Element> elements;
+
+    @ManyToOne(targetEntity = Author.class)
+    private ArrayList<Author> authors;
 
     public Book(String title) {
         this.title = title;
         this.elements = new ArrayList<Element>();
         this.authors = new ArrayList<Author>();
-    }
-
-    public Book() {
-
     }
 
     public void addContent (Element element) {
@@ -58,10 +58,5 @@ public class Book implements Visitee {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    @Id
-    public Long getId() {
-        return id;
     }
 }

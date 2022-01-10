@@ -1,26 +1,12 @@
 package ro.uvt.models;
 
-import lombok.NoArgsConstructor;
 import ro.uvt.services.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-
-@Entity
-@NoArgsConstructor
-public class ImageProxy extends Element implements Picture,Visitee{
+public class ImageProxy implements Element,Picture,Visitee{
     private String url;
 
-    @OneToOne
     private Dimension dim = new Dimension(300, 300);
-    @OneToOne
     private Image img;
-
-    @Id
-    @GeneratedValue
-    private Long id;
 
     public ImageProxy(String url) {
         this.url = url;
@@ -65,6 +51,9 @@ public class ImageProxy extends Element implements Picture,Visitee{
     public void remove(Element element) {
         // TODO Auto-generated method stub
         
+    }
+    public boolean find(Element element) {
+        return false;
     }
 
     public void accept(Visitor visitor) {

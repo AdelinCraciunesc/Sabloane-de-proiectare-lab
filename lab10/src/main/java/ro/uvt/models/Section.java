@@ -2,23 +2,12 @@ package ro.uvt.models;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import lombok.NoArgsConstructor;
 import ro.uvt.services.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
-@Entity
-@NoArgsConstructor
-public class Section extends Element implements Visitee{
+public class Section implements Element,Visitee{
     private String title;
-    @OneToMany
     private ArrayList<Element> elements = new ArrayList<>();
 
-    @Id
-    @GeneratedValue
     private Long id;
 
     public Section(String title){
@@ -40,14 +29,15 @@ public class Section extends Element implements Visitee{
         this.elements.remove(element);
     }
 
-//    public boolean find(Element element) {
-//        for (Element e : this.elements) {
-//            if (e.find(element))
-//                return true;
-//        }
-//
-//        return false;
-//    }
+
+    public boolean find(Element element) {
+        for (Element e : this.elements) {
+            if (e.find(element))
+                return true;
+        }
+
+        return false;
+    }
 
 //    public Element clone() {
 //        Section newclone = new Section(this.title);
